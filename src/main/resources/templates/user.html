@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	#listBox{width:300px;}
+	#listTable td, #listTable th{padding:0;margin:0;border:1px solid #000;}
+	
+	#insertBox{width:300px;}
+</style>
+</head>
+<body>
+<div id="listBox">
+	<table id="listTable">
+		<tr>
+			<th>아이디</th>
+			<th>이름</th>
+			<th>작업</th>
+		</tr>
+	
+		<tr th:each="message : ${list}">
+			<td th:text="${message.id}"></td>
+			<td th:text="${message.name}"></td>
+			<td th:text="${message.age}"></td>
+			<td>
+				<a href="#">수정</a> / <a th:href="@{'/delete?id=' + ${message.id}}">삭제</a>
+			</td>
+		</tr>
+	</table>
+	<a href="/user">리스트로 이동</a>
+</div>
+
+<div id="insertBox">
+	<br />
+	<span>등록 영역</span><br />
+	<form action="/insert" method="post">
+		아이디: <input type="text" name="id" /><br />
+		이름: <input type="text" name="name" /><br />
+		나이: <input type="text" name="age" />
+		<button type="submit" style="float:right;">등록</button>
+	</form>
+</div>
+</body>
+</html>
